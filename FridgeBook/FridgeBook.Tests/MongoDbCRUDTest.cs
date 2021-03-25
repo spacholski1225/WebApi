@@ -22,6 +22,7 @@ namespace FridgeBook.Tests
             Assert.IsNotNull(mockDb.LoadRecords<NewObject>("MockObject"));
         }
 
+
     }
 
     public class NewObject
