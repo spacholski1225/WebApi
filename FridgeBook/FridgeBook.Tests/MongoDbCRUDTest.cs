@@ -8,20 +8,29 @@ namespace FridgeBook.Tests
     public class MongoDbTest
     {
         public MongoDbCRUD mockDb { get; set; }
+        public NewObject mockObject { get; set; }
         [SetUp]
         public void Setup()
         {
             mockDb = new MongoDbCRUD("MockDatabase");
+            mockObject = new NewObject { NickName = "Szymon" };
         }
 
         [Test]
         public void InsertRecord_NewObject_NotEmpty()
         {
-            mockDb.InsertRecord("MockObject", new NewObject { NickName = "Szymon" });
+            mockDb.InsertRecord("MockObject",mockObject );
 
             Assert.IsNotNull(mockDb.LoadRecords<NewObject>("MockObject"));
         }
 
+        //[Test]
+        //public void DeleteRecord_NewObject_IsDeleted()
+        //{
+        //    mockDb.DeleteRecord<NewObject>("MockObject", mockObject.Id);
+
+        //    Assert.IsNull(mockDb.LoadRecordById<NewObject>("MockObject", mockObject.Id));
+        //}
 
     }
 
