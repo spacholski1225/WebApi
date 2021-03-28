@@ -9,5 +9,6 @@ namespace FridgeBook.Models
         public List<string> MustHaveIngredients { get; set; }
         public List<string> OptionalIngredients { get; set; }
 
+        
     }
 }

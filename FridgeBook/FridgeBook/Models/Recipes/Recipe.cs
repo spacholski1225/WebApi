@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 
 namespace FridgeBook.Models
 {
-    public class Recipe
+    public abstract class Recipe
     {
-        public Pizza Pizza { get; set; }
+        public Guid Id { get; set; }
+        public List<string> MustHaveIngredients { get; set; }
+        public List<string> OptionalIngredients { get; set; }
     }
 }

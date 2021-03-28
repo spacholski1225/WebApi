@@ -19,7 +19,7 @@ namespace FridgeBook.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Pizza> AddRecipeIntoDatabase() //jaki tu powinine byc zwracany typ
+        public ActionResult<Pizza> AddRecipeIntoDatabase() 
         {
             Pizza record = new Pizza
             {
@@ -29,24 +29,32 @@ namespace FridgeBook.Controllers
              _context.InsertRecord<Pizza>("Pizza", record);
             return Ok();
         }
-        
+
+        /// <summary>
+        /// Function retrives the recipe according to the users requirments 
+        /// </summary>
+        /// <param name="first">First ingredient</param>
+        /// <param name="second">Second ingredient</param>
+        /// <param name="third">Third ingredient</param>
+        /// <returns>Returns an objects that meets the requirments</returns>
         [HttpGet]
-        public ActionResult<IEnumerable<Pizza>> GetRecipeByIngredients(List<string> ingredients) //trzeba dorobic metode w MongoDbCRUD ktora znajduje rekordy z zawieranymi skladnikami
+        public ActionResult<IEnumerable<Pizza>> GetRecipeByIngredients(string first, string second, string third) 
         {
+            List<string> ingredients = new List<string> { first, second, third };
             var listOfPizzas = _context.LoadRecords<Pizza>("Pizza");
             var pizzasWithIngredients = new List<Pizza>();
-            var newPizza = new Pizza();
+            var list = new List<string>();
             foreach (var pizza in listOfPizzas)
             {
                 foreach (var pizzaIngredient in pizza.MustHaveIngredients)
                 {
                     if (ingredients.Contains(pizzaIngredient))
                     {
-                        newPizza.MustHaveIngredients.Add(pizzaIngredient);
+                        list.Add(pizzaIngredient);
                     }
                 }
-                if(pizza == newPizza) // porownanie dwoch obiektow czy ich wartosci tj lista MustHaveIngredients jest taka sama
-                                        //jesli tak to dodac obiekt pizza do listy pizz zawierajacych te skladniki
+                if(pizza.MustHaveIngredients.SequenceEqual(list)) 
+                                                     
                 {
                     pizzasWithIngredients.Add(pizza);
                 }

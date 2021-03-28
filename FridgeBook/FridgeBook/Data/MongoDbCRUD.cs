@@ -29,6 +29,7 @@ namespace FridgeBook.Data
             return collection.Find(new BsonDocument()).ToList();
         }
 
+
         public T LoadRecordById<T>(string table, Guid id)
         {
             var collection = db.GetCollection<T>(table);
