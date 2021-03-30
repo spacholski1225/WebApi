@@ -24,14 +24,6 @@ namespace FridgeBook.Tests
             Assert.IsNotNull(mockDb.LoadRecords<NewObject>("MockObject"));
         }
 
-        //[Test]
-        //public void DeleteRecord_NewObject_IsDeleted()
-        //{
-        //    mockDb.DeleteRecord<NewObject>("MockObject", mockObject.Id);
-
-        //    Assert.IsNull(mockDb.LoadRecordById<NewObject>("MockObject", mockObject.Id));
-        //}
-
     }
 
     public class NewObject

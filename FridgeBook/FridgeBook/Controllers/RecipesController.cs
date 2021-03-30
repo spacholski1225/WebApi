@@ -19,14 +19,14 @@ namespace FridgeBook.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Pizza> AddRecipeIntoDatabase() 
+        public ActionResult<Recipe> AddRecipeIntoDatabase() 
         {
-            Pizza record = new Pizza
+            Recipe record = new Recipe
             {
                 MustHaveIngredients = new List<string> { "Flour", "Yeast", "Cheese" }
             };
 
-             _context.InsertRecord<Pizza>("Pizza", record);
+             _context.InsertRecord<Recipe>("Recipes", record);
             return Ok();
         }
 
@@ -38,34 +38,36 @@ namespace FridgeBook.Controllers
         /// <param name="third">Third ingredient</param>
         /// <returns>Returns an objects that meets the requirments</returns>
         [HttpGet]
-        public ActionResult<IEnumerable<Pizza>> GetRecipeByIngredients(string first, string second, string third) 
+        public ActionResult<IEnumerable<Recipe>> GetRecipeByIngredients(string first, string second, string third) //dodac model podawanych instrukcji
         {
             List<string> ingredients = new List<string> { first, second, third };
-            var listOfPizzas = _context.LoadRecords<Pizza>("Pizza");
-            var pizzasWithIngredients = new List<Pizza>();
+            var listOfRecipes = _context.LoadRecords<Recipe>("Pizza");
+            var dish = new List<Recipe>();
             var list = new List<string>();
-            foreach (var pizza in listOfPizzas)
+
+            foreach (var recipe in listOfRecipes)
             {
-                foreach (var pizzaIngredient in pizza.MustHaveIngredients)
+                foreach (var recIng in recipe.MustHaveIngredients)
                 {
-                    if (ingredients.Contains(pizzaIngredient))
-                    {
-                        list.Add(pizzaIngredient);
-                    }
+                    if (ingredients.Contains(recIng))
+                        list.Add(recIng);
                 }
-                if(pizza.MustHaveIngredients.SequenceEqual(list)) 
-                                                     
-                {
-                    pizzasWithIngredients.Add(pizza);
-                }
+
+                if (recipe.MustHaveIngredients.SequenceEqual(list))
+                    dish.Add(recipe);
             }
-
-            return Ok(pizzasWithIngredients);
-
-            //przeszukiwanie listy pizza przez liste ingredients tak aby pasujace do siebie elementy byly
-            //sprawdzane i zostala zwrocona lista obiektow pizza ktora zawiera pasujace skladniki
-
+            return Ok(dish);
         }
+
+        [HttpDelete]
+        public ActionResult DeleteById(Guid id, string table)
+        {
+            _context.DeleteRecord<Recipe>(table, id);
+
+            return Ok();
+            
+        }
+
 
     }
 }
