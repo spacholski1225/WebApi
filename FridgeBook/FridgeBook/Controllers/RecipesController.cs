@@ -15,19 +15,14 @@ namespace FridgeBook.Controllers
 
         public RecipesController()
         {
-            _context = new MongoDbCRUD("Recipes"); // to trzeba zmienic na di
+            _context = new MongoDbCRUD("Recipes"); 
         }
 
         [HttpPost]
-        public ActionResult<Recipe> AddRecipeIntoDatabase() 
+        public ActionResult<Recipe> AddRecipeIntoDatabase(Recipe recipe) 
         {
-            Recipe record = new Recipe
-            {
-                MustHaveIngredients = new List<string> { "Flour", "Yeast", "Cheese" }
-            };
-
-             _context.InsertRecord<Recipe>("Recipes", record);
-            return Ok();
+             _context.InsertRecord<Recipe>("Recipes", recipe);
+            return Ok(recipe);
         }
 
         /// <summary>
@@ -38,7 +33,7 @@ namespace FridgeBook.Controllers
         /// <param name="third">Third ingredient</param>
         /// <returns>Returns an objects that meets the requirments</returns>
         [HttpGet]
-        public ActionResult<IEnumerable<Recipe>> GetRecipeByIngredients(string first, string second, string third) //dodac model podawanych instrukcji
+        public ActionResult<IEnumerable<Recipe>> GetRecipeByIngredients(string first, string second, string third) //dodac model ktory zawiera liste podawanych skladnikow
         {
             List<string> ingredients = new List<string> { first, second, third };
             var listOfRecipes = _context.LoadRecords<Recipe>("Pizza");
@@ -62,9 +57,14 @@ namespace FridgeBook.Controllers
         [HttpDelete]
         public ActionResult DeleteById(Guid id, string table)
         {
-            _context.DeleteRecord<Recipe>(table, id);
+            var recipe = _context.LoadRecordById<Recipe>("Recipes", id);
+            if(recipe != null)
+            {
+                _context.DeleteRecord<Recipe>(table, id);
+                return Ok();
+            }
+            return NotFound();
 
-            return Ok();
             
         }
 

@@ -1,5 +1,6 @@
 ﻿using FridgeBook.Controllers;
 using FridgeBook.Models;
+using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,9 @@ namespace FridgeBook.Tests
 {
     public class RecipeControllerTest
     {
-        public Recipe Recipe { get; set; }
+        private Recipe Recipe { get; set; }
         public RecipesController Controller{ get; set; }
+        [SetUp]
         public void Setup()
         {
             Recipe = new Recipe
@@ -24,7 +26,17 @@ namespace FridgeBook.Tests
         [Test]
         public void DeleteById_TestDeletingObject_ExpectTrue()
         {
-            Controller.DeleteById(Recipe.Id, "");//nie dziala dopoki w RecipeController nie bedzie _context w DI
+            var result = Controller.DeleteById(Recipe.Id, "Recipes");
+            
+        }
+
+        [Test]
+        public void AddRecipeIntoDatabase_TestAddToDatabase_ExpectTrue()
+        {
+            var result = Controller.AddRecipeIntoDatabase(Recipe);
+
+            Assert.IsNotNull(result);
+            
         }
     }
 }
