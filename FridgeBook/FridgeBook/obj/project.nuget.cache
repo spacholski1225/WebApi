@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/eD2rrwXFB+lCrlETtMc3XucFF4vYfvETYY7szJt+kgmt/NcEjEmr6M0dd1zuxQYXK+8tIO+/gVpHmzf/ZRX7A==",
+  "dgSpecHash": "jb5GOaT9xFvHDUmV180T6VqSMsPBSQlAFA/dN33yebnqYe5rciyrJeTBahgdfIln86vooI/J1NWaFEas5cPlxQ==",
   "success": true,
-  "projectFilePath": "D:\\Projects\\WebApiProject\\WebApi\\FridgeBook\\FridgeBook\\FridgeBook.csproj",
+  "projectFilePath": "C:\\Projekty\\WebApi\\FridgeBook\\FridgeBook\\FridgeBook.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bld\\.nuget\\packages\\dnsclient\\1.4.0\\dnsclient.1.4.0.nupkg.sha512",
     "C:\\Users\\bld\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",

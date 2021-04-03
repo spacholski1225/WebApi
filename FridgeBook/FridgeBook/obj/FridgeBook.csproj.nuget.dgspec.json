@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\WebApiProject\\WebApi\\FridgeBook\\FridgeBook\\FridgeBook.csproj": {}
+    "C:\\Projekty\\WebApi\\FridgeBook\\FridgeBook\\FridgeBook.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\WebApiProject\\WebApi\\FridgeBook\\FridgeBook\\FridgeBook.csproj": {
+    "C:\\Projekty\\WebApi\\FridgeBook\\FridgeBook\\FridgeBook.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\WebApiProject\\WebApi\\FridgeBook\\FridgeBook\\FridgeBook.csproj",
+        "projectUniqueName": "C:\\Projekty\\WebApi\\FridgeBook\\FridgeBook\\FridgeBook.csproj",
         "projectName": "FridgeBook",
-        "projectPath": "D:\\Projects\\WebApiProject\\WebApi\\FridgeBook\\FridgeBook\\FridgeBook.csproj",
+        "projectPath": "C:\\Projekty\\WebApi\\FridgeBook\\FridgeBook\\FridgeBook.csproj",
         "packagesPath": "C:\\Users\\bld\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\WebApiProject\\WebApi\\FridgeBook\\FridgeBook\\obj\\",
+        "outputPath": "C:\\Projekty\\WebApi\\FridgeBook\\FridgeBook\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"

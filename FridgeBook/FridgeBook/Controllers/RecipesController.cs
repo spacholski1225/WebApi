@@ -15,13 +15,13 @@ namespace FridgeBook.Controllers
 
         public RecipesController()
         {
-            _context = new MongoDbCRUD("Recipes"); 
+            _context = new MongoDbCRUD("Recipes");
         }
 
         [HttpPost]
-        public ActionResult<Recipe> AddRecipeIntoDatabase(Recipe recipe) 
+        public ActionResult<Recipe> AddRecipeIntoDatabase(Recipe recipe)
         {
-             _context.InsertRecord<Recipe>("Recipes", recipe);
+            _context.InsertRecord<Recipe>("Recipes", recipe);
             return Ok(recipe);
         }
 
@@ -54,18 +54,25 @@ namespace FridgeBook.Controllers
             return Ok(dish);
         }
 
+        [HttpPut]
+        public ActionResult UpdateRecipeById(Recipe oldRecipe, Recipe newRecipe, string table)
+        {
+            _context.UpsertRecord<Recipe>(table, oldRecipe.Id, newRecipe);
+            return Ok();
+        }
+
         [HttpDelete]
         public ActionResult DeleteById(Guid id, string table)
         {
             var recipe = _context.LoadRecordById<Recipe>("Recipes", id);
-            if(recipe != null)
+            if (recipe != null)
             {
                 _context.DeleteRecord<Recipe>(table, id);
                 return Ok();
             }
             return NotFound();
 
-            
+
         }
 
 

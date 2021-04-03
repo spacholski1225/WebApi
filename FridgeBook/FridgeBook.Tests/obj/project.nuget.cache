@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Jt7RW1S5AcbhDVU8IhMDEzKM+ex1i0E4AJ8O/tYA9t2r4cmGDCS8XTptuOuh5FHTovp36MCU7bBjx0lnSxCagA==",
+  "dgSpecHash": "qZdVd7THZJPV7YSodeJ+KNk3LXZb9vObwvLoxG2CUmoreeSv3JEO+rD+Ba4VnUis15cj7/rlE1LS3L5MMGqK3w==",
   "success": true,
-  "projectFilePath": "D:\\Projects\\WebApiProject\\WebApi\\FridgeBook\\FridgeBook.Tests\\FridgeBook.Tests.csproj",
+  "projectFilePath": "C:\\Projekty\\WebApi\\FridgeBook\\FridgeBook.Tests\\FridgeBook.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bld\\.nuget\\packages\\dnsclient\\1.4.0\\dnsclient.1.4.0.nupkg.sha512",
     "C:\\Users\\bld\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",
