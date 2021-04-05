@@ -39,14 +39,13 @@ namespace FridgeBook.Data
         }
 
        
-        public void UpsertRecord<T>(string table, Guid id, T record)
+        public T UpsertRecord<T>(string table, T record, Guid id)
         {
             var collection = db.GetCollection<T>(table);
+            var filter = Builders<T>.Filter.Eq("Id", id);
 
-            var result = collection.ReplaceOne(
-                new BsonDocument("_id", id),
-                record,
-                new ReplaceOptions { IsUpsert = true });
+
+            return collection.FindOneAndReplace<T>(filter, record);
         }
 
         public void DeleteRecord<T>(string table, Guid id)

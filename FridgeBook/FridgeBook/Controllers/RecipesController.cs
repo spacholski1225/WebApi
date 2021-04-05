@@ -55,10 +55,9 @@ namespace FridgeBook.Controllers
         }
 
         [HttpPut]
-        public ActionResult UpdateRecipeById(Recipe oldRecipe, Recipe newRecipe, string table)
+        public Recipe UpdateRecipeById(Recipe recipe, string table)
         {
-            _context.UpsertRecord<Recipe>(table, oldRecipe.Id, newRecipe);
-            return Ok();
+            return _context.UpsertRecord<Recipe>(table, recipe, recipe.Id);
         }
 
         [HttpDelete]
